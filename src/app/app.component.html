@@ -1,8 +1,31 @@
 <app-header></app-header>
-<main>
-    <ul class="">
-        <li class="">
-            <app-user></app-user>
-        </li>
-    </ul>
-</main>
+<div class="container mt-5">
+    <main>
+        <div class="row">
+            <div class="col-md-3">
+                <ul class="list-group">
+                    @for (user of users; track user.id) {
+                        <li class="">
+                            <app-user 
+                            [user]="user"
+                            (select)="onSelectUser($event)">
+                        </app-user>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <div class="col-md-9">
+                @if (selectedUser) {
+                    <app-tasks [name]="selectedUser.name"
+                    ></app-tasks>
+                } @else {
+                    <p id="fallback">Select the user</p>
+                }
+                
+            </div>
+        </div>
+        
+
+       
+    </main>
+</div>

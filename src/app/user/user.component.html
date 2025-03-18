@@ -1,6 +1,8 @@
-<div class="container pt-4">
-    <button>
-        <img src="" alt="">
-        <span>NAME</span>
-    </button>
+<div class="">
+    <div class="mb-3">
+        <button (click)="onSelectUser()">
+            <img [src]="imagePath()" [alt]="user.name">
+            <span>{{ user.name }}</span>
+        </button>
+    </div>
 </div>
