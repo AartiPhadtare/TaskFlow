@@ -1,0 +1,14 @@
+.task-title-wrap{
+    background-color: #482c62;
+    color: white;
+}
+.add-task .btn-primary{
+    background: #c09edf;
+    color: #150426;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: 0 !important;
+}
+#task .list-group{
+    list-style: none;
+}

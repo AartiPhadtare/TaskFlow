@@ -16,7 +16,7 @@
             </div>
             <div class="col-md-9">
                 @if (selectedUser) {
-                    <app-tasks [name]="selectedUser.name"
+                    <app-tasks [userId]="selectedUser.id" [name]="selectedUser.name"
                     ></app-tasks>
                 } @else {
                     <p id="fallback">Select the user</p>
