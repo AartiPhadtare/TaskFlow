@@ -24,10 +24,23 @@ export class TasksService {
          name: 'prepare issue template',
          Summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
          DueDate: '2025-12-31'
-        }
+        },
+        {
+            id: '4',
+            userId: 'u3',
+            name: 'prepare issue template',
+            Summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+            DueDate: '2025-12-31'
+           }
        ];
 
+constructor(){
+    const tasks = localStorage.getItem('tasks');
 
+    if(tasks){
+        this.task = JSON.parse(tasks);
+    }
+}
        getUserTasks(userId: string){
         return this.task.filter((task) => task.userId === userId);
        }
@@ -40,9 +53,15 @@ export class TasksService {
             Summary: taskData.summary,
             DueDate: taskData.date
           })
+          this.saveTasks();
        }
 
        removeTask(id:string){
         this.task = this.task.filter((task) => task.id !== id);
+        this.saveTasks();
+       }
+
+       private saveTasks(){
+        localStorage.setItem('tasks', JSON.stringify(this.task));
        }
 }
