@@ -1,9 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { TaskComponent } from "./task/task.component";
-
+import { NewTaskComponent } from "./new-task/new-task.component";
+import { NewTaskData } from './task/task.model';
+import { TasksService } from './tasks.service';
 @Component({
   selector: 'app-tasks',
-  imports: [TaskComponent],
+  imports: [TaskComponent, NewTaskComponent],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css'
 })
@@ -11,31 +13,28 @@ export class TasksComponent {
 @Input({required:true}) userId!: string; 
 @Input({required:true}) name?:string;
 
-task = [
- {
-  id: "1", 
-  userId: "u1", 
-  name: "Task 1", 
-  Summary: "Description 1", 
-  DueDate: "2025-03-25" 
- },
- {
-  id: "2", 
-  userId: "u2", 
-  name: "Task 2", 
-  Summary: "Description 2", 
-  DueDate: "2025-03-26" 
- },
- {
-  id: '3',
-  userId: 'u3',
-  name: 'prepare issue template',
-  Summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-  DueDate: '2025-12-31'
- }
-];
+isAddingTask = false;
+
+
+constructor(private taskService: TasksService){
+
+}
 
 get selectedUserTasks(){
-  return this.task.filter((task) => task.userId === this.userId)
+  return this.taskService.getUserTasks(this.userId);
 }
+
+onCompleteTask(id:string){
+
+}
+
+onStartAddTask(){
+this.isAddingTask = true;
+}
+
+onCloseAddTask(){
+  this.isAddingTask = false;
+}
+
+
 }

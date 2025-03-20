@@ -1,3 +1,6 @@
+@if (isAddingTask) {
+    <app-new-task [userId]="userId" (close)="onCloseAddTask()"/>
+}
 <section id="task">
     <div class="task-title-wrap p-4">
 
@@ -6,7 +9,7 @@
                 <h2>{{name}}s' tasks</h2>
             </div>
             <div class="add-task ">
-                <button class="btn btn-primary">Add task</button>
+                <button class="btn btn-primary" (click)="onStartAddTask()">Add task</button>
             </div>
         </div>
         <div>

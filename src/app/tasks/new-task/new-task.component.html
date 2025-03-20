@@ -1,0 +1,22 @@
+<div class="backdrop" (click)="onCancel()"></div>
+<dialog class="" open>
+    <h2>Add New Task</h2>
+    <form action="" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="Title">Title</label>
+            <input class="form-control" type="text" id="title" name="title" [(ngModel)]="enteredTitle">
+        </div>
+        <div class="mb-3">
+            <label for="Summary">Summary</label>
+            <textarea class="form-control" name="summary" id="summary" rows="5" [(ngModel)]="enteredSummary"></textarea>
+        </div>
+        <div class="mb-4">
+            <label for="due-date">Due Date</label>
+            <input class="form-control" type="date" name="due-date" id="due-date" [(ngModel)]="enteredDate">
+        </div>
+        <div class="mb-4 actions">
+    <button type="button" class="btn btn-primary me-3" (click)="onCancel()">Cancel</button>
+            <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+    </form>
+</dialog>

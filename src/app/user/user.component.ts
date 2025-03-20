@@ -2,18 +2,7 @@ import { Component, computed, EventEmitter, Input, output, Output } from '@angul
 
 import { DUMMY_USERS } from '../dummy-users';
 
-// type User = {
-//   id: string;
-//   avatar: string;
-//   name: string;
-// }
-
-interface User {
-  id: string;
-  avatar: string;
-  name: string;
-}
-
+import { User } from './user.model';
 @Component({
   selector: 'app-user',
   imports: [],
@@ -25,6 +14,7 @@ export class UserComponent {
 // @Input({required:true}) avatar!: string;
 // @Input({required:true}) name!: string;
 @Input({required:true}) user!: User;
+@Input({required:true}) selected!: boolean;
 @Output() select = new EventEmitter<string>();
 // select = output<string>();
 
